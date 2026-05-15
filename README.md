@@ -1,8 +1,11 @@
 # Leukemia Biomarker Discovery & Bioelectric Analysis
 ## 📝 Research Overview
 This repository contains the computational pipeline and bioinformatics tools developed for the research paper: "In Silico Validation of CRISPRa-Mediated LOC401317 Activation to Reverse KCNJ15-Induced Bioelectric Immunosuppression in Acute Myeloid Leukemia".
+
 The project implements a Deep Learning framework for clinical subtype classification and feature selection. It specifically explores the synergy between genomic "dark matter" (lncRNAs) and cancer bioelectricity by identifying regulatory axes between non-coding transcripts and ion channels.
+
 This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnerability in AML. By demonstrating that restoring the cellular membrane potential reverses tumor-induced immunosuppression, we provide a robust computational roadmap for therapeutic intervention. These findings establish a rigorous mechanistic foundation to transition from in silico modeling to experimental in vitro assays, highlighting a promising non-canonical pathway for leukemia treatment.
+
 ## 📂 Project Structure
 ````
 ├── data/
