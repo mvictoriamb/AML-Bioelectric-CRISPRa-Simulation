@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "TU_APELLIDO"
+    given-names: "TU_NOMBRE"
+title: "In Silico Validation of CRISPRa-Mediated LOC401317 Activation in AML"
+version: 1.0.0
+doi: 10.5281/zenodo.20208524
+date-released: 2024-05-15
+url: "https://github.com/mvictoriamb/AML-Bioelectric-CRISPRa-Simulation"
