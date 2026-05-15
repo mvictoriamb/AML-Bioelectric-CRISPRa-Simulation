@@ -6,6 +6,8 @@ The project implements a Deep Learning framework for clinical subtype classifica
 
 This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnerability in AML. By demonstrating that restoring the cellular membrane potential reverses tumor-induced immunosuppression, we provide a robust computational roadmap for therapeutic intervention. These findings establish a rigorous mechanistic foundation to transition from in silico modeling to experimental in vitro assays, highlighting a promising non-canonical pathway for leukemia treatment.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20208523.svg)](https://doi.org/10.5281/zenodo.20208523)
+
 ## 📂 Project Structure
 ````
 ├── data/
