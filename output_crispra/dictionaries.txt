@@ -1,0 +1,72 @@
+Signals: 
+=======
+0 : substrate
+1 : intracellular substrate
+2 : substrate gradient
+3 : pressure
+4 : volume
+5 : contact with default
+6 : contact with live cell
+7 : contact with dead cell
+8 : contact with apoptotic cell
+9 : contact with necrotic cell
+10 : contact with other dead cell
+11 : contact with basement membrane
+12 : damage
+13 : damage delivered
+14 : attacking
+15 : dead
+16 : total attack time
+17 : time
+18 : custom:kcnj15_voltage
+19 : custom:loc401317_active
+20 : custom:sample
+21 : apoptotic
+22 : necrotic
+
+Behaviors: 
+=========
+0 : substrate secretion
+1 : substrate secretion target
+2 : substrate uptake
+3 : substrate export
+4 : cycle entry
+5 : exit from cycle phase 1
+6 : exit from cycle phase 2
+7 : exit from cycle phase 3
+8 : exit from cycle phase 4
+9 : exit from cycle phase 5
+10 : apoptosis
+11 : necrosis
+12 : migration speed
+13 : migration bias
+14 : migration persistence time
+15 : chemotactic response to substrate
+16 : cell-cell adhesion
+17 : cell-cell adhesion elastic constant
+18 : adhesive affinity to default
+19 : relative maximum adhesion distance
+20 : cell-cell repulsion
+21 : cell-BM adhesion
+22 : cell-BM repulsion
+23 : phagocytose apoptotic cell
+24 : phagocytose necrotic cell
+25 : phagocytose other dead cell
+26 : phagocytose default
+27 : attack default
+28 : fuse to default
+29 : transform to default
+30 : asymmetric division to default
+31 : custom:kcnj15_voltage
+32 : custom:loc401317_active
+33 : custom:sample
+34 : is_movable
+35 : immunogenicity to default
+36 : cell attachment rate
+37 : cell detachment rate
+38 : maximum number of cell attachments
+39 : attack damage rate
+40 : attack duration
+41 : damage rate
+42 : damage repair rate
+
