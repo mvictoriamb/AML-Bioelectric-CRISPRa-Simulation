@@ -13,6 +13,11 @@ This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnera
 │   └── GPL570-55999.txt           # Annotation file (Must be downloaded manually)
 ├── models/
 │   └── modelo_leucemia.keras      # Trained Neural Network model
+└── physicell/
+│   ├── output_control/
+│   ├── output_crispra/
+│   ├── output_rosi/
+│   └── plot_resultados.py
 ├── scripts/
 │   ├── Red_Neuronal_CuMiDa.ipynb      # Main development notebook
 │   ├── analisis_subtipos.py       # Generates expression heatmaps per clinical subtype
@@ -26,12 +31,7 @@ This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnera
 │   └── sobreexpresion_loc401317.png
 ├── results/
 │   └── biomarcadores.csv          # Top genes identified by the AI 
-├── requirements.txt               # Required Python libraries
-└── physicell/
-    ├── output_control/
-    ├── output_crispra/
-    ├── output_rosi/
-    └── plot_resultados.py
+└── requirements.txt               # Required Python libraries
 ````
 
 ## 📂 Data Requirements
