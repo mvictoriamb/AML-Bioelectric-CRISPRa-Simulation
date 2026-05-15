@@ -31,7 +31,7 @@ The project implements a Deep Learning framework for clinical subtype classifica
     └── plot_resultados.py
 ````
 
-##📂 Data Requirements
+## 📂 Data Requirements
 
 Due to GitHub's file size restrictions, the platform annotation file is not included in this repository.
 
