@@ -31,6 +31,9 @@ This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnera
 │   └── sobreexpresion_loc401317.png
 ├── results/
 │   └── biomarcadores.csv          # Top genes identified by the AI 
+├── CITATION.cff
+├── LICENSE
+├── README.md
 └── requirements.txt               # Required Python libraries
 ````
 
