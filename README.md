@@ -4,6 +4,7 @@ This repository contains the computational pipeline and bioinformatics tools dev
 The project implements a Deep Learning framework for clinical subtype classification and feature selection. It specifically explores the synergy between genomic "dark matter" (lncRNAs) and cancer bioelectricity by identifying regulatory axes between non-coding transcripts and ion channels.
 
 ## 📂 Project Structure
+````
 ├── data/
 │   ├── Leukemia_GSE9476.csv       # Main dataset (Gene expression matrix)
 │   └── GPL570-55999.txt           # Annotation file (Must be downloaded manually)
@@ -28,6 +29,7 @@ The project implements a Deep Learning framework for clinical subtype classifica
     ├── output_crispra/
     ├── output_rosi/
     └── plot_resultados.py
+````
 
 ##📂 Data Requirements
 
