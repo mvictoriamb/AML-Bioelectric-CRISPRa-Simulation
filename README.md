@@ -8,7 +8,7 @@ This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnera
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20208524.svg)](https://doi.org/10.5281/zenodo.20208524)
 
-## 📂 Project Structure
+## Project Structure
 ````
 ├── data/
 │   ├── Leukemia_GSE9476.csv       # Main dataset (Gene expression matrix)
