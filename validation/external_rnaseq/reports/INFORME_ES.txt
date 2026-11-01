@@ -1,0 +1,160 @@
+RÉPLICA EXTERNA EN RNA-SEQ Y AUDITORÍA DEL MODELO GUARDADO
+1 de noviembre de 2026
+
+RESULTADO PRINCIPAL
+Se descargaron y analizaron DOS cohortes externas RNA-seq públicas, sin elegir
+la cohorte por su resultado. La asociación CREB5-KCNJ15 es positiva y significativa
+en ambas después de ajustar por Benjamini-Hochberg la familia de cuatro pruebas
+externas (dos cohortes por dos métodos). No se ha validado una señal específica
+de CREB5-AS1, ni la precisión predictiva de la red neuronal ni una terapia.
+
+                           n        Spearman rho       IC95%             q BH
+GSE9476, sólo AML           26       0.602735           0.253 a 0.829      descubrimiento
+TCGA-LAML                 173       0.520554           0.401 a 0.625      0.00001
+Beat AML de novo          220       0.473838           0.347 a 0.587      0.00001
+
+Los IC95% son bootstrap percentil de pacientes, 10,000 réplicas. El p de Spearman
+es bilateral por 99,999 permutaciones aleatorias, con corrección (extremos+1)/
+(B+1). El mínimo p resoluble es 0.00001; no se interpreta como una probabilidad
+exacta de ese tamaño. No se observaron permutaciones tan extremas como la muestra.
+La semilla de los remuestreos es 42.
+
+Pearson secundario:
+  TCGA-LAML: r=0.539462; p=1.88886e-14; q BH=7.55543e-14.
+  Beat AML:  r=0.447057; p=3.30661e-12; q BH=6.61321e-12.
+Los cuatro contrastes se corrigen juntos; el descubrimiento no entra en esa
+familia. Esta corrección NO compensa una selección de hipótesis previa entre
+miles de genes ni equivale a un análisis genómico completo con FDR controlada.
+
+COMPARACIÓN CON EL MICROARRAY
+La comparación apropiada usa sólo las 26 muestras AML del archivo local.
+La correlación global anterior de Pearson r=0.978 mezclaba 64 muestras AML y
+otros tipos de material; no es una referencia comparable a cohortes sólo AML.
+Frente a Spearman del conjunto AML original, rho disminuye 0.082 en TCGA y
+0.129 en Beat AML. Se replica el signo y una asociación de tamaño moderado.
+Los IC95% bootstrap de la diferencia son [-0.339,0.274] y [-0.389,0.231].
+No excluyen cero, pero eso NO demuestra equivalencia: no se fijó ni se comprobó
+un margen de equivalencia. El conjunto de descubrimiento es pequeño y su IC
+es amplio. No debe afirmarse que los efectos sean iguales o que no haya overfit.
+
+IDENTIDAD: QUÉ SE HA MEDIDO
+El script original usa 205931_s_at (etiquetada LOC401317) y 210119_at (KCNJ15).
+La anotación local GPL570 contiene NM_004904 y CREB5 /// LOC401317 para la primera.
+NCBI retiró GeneID 401317 y lo sustituyó por CREB5, GeneID 9586, codificante.
+Las matrices externas contienen CREB5 y KCNJ15; no contienen una fila LOC401317.
+Por eso el resultado se etiqueta CREB5-KCNJ15, y no se atribuye específicamente
+a CREB5-AS1 ni a un mecanismo antisense. No se ha remapeado la secuencia de la
+sonda contra un genoma/transcriptoma actual, por lo que su especificidad original
+no queda establecida. NR_024040.1 corresponde a CSGALNACT1 y no se ha utilizado
+como sustituto de CREB5. Tampoco se usan resultados de guías para calibrar genes.
+
+DATOS Y SELECCIÓN DE PACIENTES
+Fuente: cBioPortal Datahub, commit fijado
+e1b75cd25bf7436d16719b7d76117ad8f3f66e54.
+
+TCGA-LAML: estudio laml_tcga, Firehose Legacy, distribución GDAC 2016-01-28.
+  Matriz RNA Seq V2 RSEM: 173 columnas de expresión; 200 muestras clínicas.
+  Se seleccionaron muestras Primary con ambos genes finitos, 173 pacientes únicos.
+  En esta distribución todas las muestras seleccionadas indican Peripheral Blood.
+  Para Spearman se usan rangos; para Pearson, log2(RSEM normalizado+1).
+  No se confundieron estos valores con TPM ni con STAR-Counts actuales del GDC.
+
+Beat AML: estudio aml_ohsu_2018, OHSU, Nature 2018 (Tyner y colaboradores).
+  Matriz etiquetada RNA Seq RPKM: 451 columnas; 672 muestras clínicas.
+  Filtro clínico previo al cálculo: SAMPLE_TIMEPOINT=Denovo y diagnóstico del
+  paciente Acute Myeloid Leukaemia (AML) and Related Precursor Neoplasms.
+  Tras exigir ambos genes finitos quedaron 222 muestras, 220 pacientes únicos.
+  Dos pacientes tenían varias muestras elegibles. Se eligió aspirado medular
+  primero y luego SAMPLE_ID por orden estable; no se escogió según expresión.
+  No se interpreta ese orden de ID como fecha de extracción.
+  Material: 139 aspirados medulares, 77 sangre periférica, 4 leucaféresis.
+  Se excluyen recaídas, transformaciones y timepoints vacíos del análisis principal.
+  El filtro Denovo no demuestra por sí solo ausencia absoluta de tratamiento.
+  La matriz suministrada incluye números negativos, de aspecto ya transformado;
+  no se aplicó otro logaritmo ni se trataron como RPKM crudo no negativo. La
+  transformación exacta no está especificada en su metaarchivo. Spearman es
+  invariante a transformaciones estrictamente crecientes; Pearson queda como
+  sensibilidad en la escala suministrada, con esta limitación explícita.
+
+Ambas cohortes son RNA-seq, pero no son datos clínicos recién recogidos en 2026:
+TCGA corresponde al estudio histórico de AML y Beat AML a la publicación de 2018.
+Se eligieron porque son accesibles, independientes del microarray y auditables.
+No se mezclaron sus matrices ni se compararon directamente sus valores absolutos.
+
+SENSIBILIDAD AL MATERIAL EN BEAT AML
+Dentro de los 139 aspirados medulares, rho=0.380987.
+Dentro de las 77 muestras de sangre periférica, rho=0.619358.
+Son comprobaciones descriptivas, no nuevas pruebas confirmatorias ni modelos
+multivariantes. El signo se mantiene en ambos materiales; quedan posibles efectos
+de composición celular, blastos, subtipo, mutaciones, edad, tratamiento y lote.
+No se han ajustado estos factores ni demostrado una relación reguladora causal.
+
+MODELO KERAS GUARDADO: AUDITORÍA, NO PREDICCIONES EXTERNAS
+Se inspeccionaron config.json y metadata.json del archivo local:
+models/modelo_leucemia.keras (archivo local del proyecto)
+Su hash y configuración completa están en model_config_audit.json.
+Arquitectura: entrada 500, Dense 128 ReLU + L2 0.01, Dropout 0.5,
+Dense 64 ReLU + L2 0.01, Dropout 0.3, Dense 5 softmax.
+Tiene 72,709 parámetros entrenables según esa arquitectura. La metadata declara
+guardado el 11 de mayo de 2026. No se ha ejecutado deserialización/predicción
+TensorFlow sobre RNA-seq ni se ha reentrenado/modificado el modelo del usuario.
+
+El notebook público usa StandardScaler, SelectKBest(f_classif,k=500), SMOTE y
+validación cruzada estratificada de cinco particiones. El escalado, selección y
+SMOTE se ajustan dentro del entrenamiento de cada partición: el orden mostrado
+es correcto para evitar esa forma concreta de fuga hacia su test.
+Después del bucle guarda la variable model: según ese código sería la red de
+la última partición, no un modelo reentrenado en todo el conjunto ni un ensemble.
+Esto se infiere del notebook; el archivo .keras no certifica la procedencia
+exacta de los pesos o las muestras con que fue entrenado.
+
+No se localizaron serializados el escalador, selector/orden de las 500 sondas ni
+el codificador de clases. La red por sí sola no contiene esa preparación externa.
+Los grupos del conjunto local son AML, Bone_Marrow, Bone_Marrow_CD34, PB y
+PBSC_CD34: NO son cinco subtipos moleculares de AML. TCGA/Beat AML seleccionados
+sólo aportan AML, no las cinco clases de referencia para medir especificidad,
+exactitud multiclase o AUC diagnóstica completa.
+
+Por estas razones NO se generan predicciones aplicando RNA-seq arbitrariamente
+a las 500 posiciones de entrada ni ajustando un escalador en la cohorte test.
+Se necesitan el pipeline congelado, anotación de sondas, regla de agregación
+sonda-gen, armonización entre plataformas definida sin utilizar etiquetas de
+test y una cohorte externa con etiquetas compatibles para evaluar la red.
+
+Dropout y L2 reducen la capacidad efectiva durante entrenamiento; no garantizan
+generalización con 64 observaciones, frente a decenas de miles de parámetros.
+Tampoco solucionan selección de hipótesis, diferencias entre tecnologías ni
+confusión por clases. La réplica de dos genes es evidencia sobre esa asociación,
+no una medida del overfitting del clasificador. No se entrega una accuracy/AUC
+externa porque sería metodológicamente injustificada con los archivos actuales.
+
+REPRODUCIBILIDAD Y ENTREGABLES
+external_tests.csv: los cuatro contrastes externos y BH de la familia completa.
+selected_samples_expression.csv: valores de los dos genes y metadatos seleccionados.
+site_sensitivity_descriptive.csv: sensibilidad descriptiva por material.
+results.json: filtros, tamaños de cohorte, IC, diferencias, versiones y SHA256.
+model_config_audit.json: configuración y huella del modelo inspeccionado.
+replication.png/.svg: comparación gráfica de descubrimiento y dos réplicas.
+download_data.py: descarga pública reproducible, unos 156 MB más metadatos.
+run_validation.py: análisis, bootstrap, permutaciones, BH y figuras.
+
+Requisitos Python: numpy, scipy, matplotlib. No hace falta TensorFlow para
+reproducir la asociación. Con el archivo real de descubrimiento disponible:
+  python scripts/download_data.py --destination data_download
+  python scripts/run_validation.py --data data_download --discovery data/discovery_aml_pair.csv --output reproduced
+Para el descubrimiento se utilizó la matriz local real; se incluye su subconjunto
+AML de dos sondas para no depender de la matriz completa en GitHub. Los datos descargados completos se mantienen en work/ y no
+se incluyen en el ZIP para evitar otra carga grande a GitHub. Se incluyen las
+filas extraídas, scripts, procedencia y resultados. No se publicó nada en GitHub.
+
+FUENTES Y ATRIBUCIÓN
+Datos curados de cBioPortal/TCGA/Beat AML. Mantener atribución y condiciones de
+los proveedores al redistribuir tablas derivadas; véanse las condiciones Datahub:
+https://github.com/cBioPortal/datahub
+https://docs.cbioportal.org/user-guide/faq/
+https://github.com/cBioPortal/datahub/tree/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/laml_tcga
+https://github.com/cBioPortal/datahub/tree/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/aml_ohsu_2018
+https://doi.org/10.1038/s41586-018-0623-z
+https://doi.org/10.1056/NEJMoa1301689
+https://www.ncbi.nlm.nih.gov/gene/401317
+https://www.ncbi.nlm.nih.gov/gene/9586

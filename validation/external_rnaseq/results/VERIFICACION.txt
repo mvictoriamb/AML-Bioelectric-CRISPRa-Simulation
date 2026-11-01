@@ -1,0 +1,1 @@
+PASS: BH contrastado con scipy.stats.false_discovery_control; rho recalculado desde el CSV entregado; pacientes unicos en cada cohorte; fuentes fijadas por commit y SHA256. No se ha realizado validacion predictiva de Keras.

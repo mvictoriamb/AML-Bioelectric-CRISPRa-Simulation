@@ -1,0 +1,1 @@
+PASS: offline verification; full pipeline rerun from included discovery subset and pinned downloaded sources. All four tests, confidence intervals, bootstrap differences, cohort counts and discovery statistics exactly match the supplied results in the tested environment. All local README links resolve. No GitHub changes were published.

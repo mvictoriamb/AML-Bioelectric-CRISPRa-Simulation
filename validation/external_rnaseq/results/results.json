@@ -1,0 +1,162 @@
+{
+  "mapping": "CREB5 (9586), not independently resolved CREB5-AS1; historical probe 205931_s_at",
+  "flow": {
+    "TCGA-LAML": {
+      "clinical_samples": 200,
+      "expression_columns": 173,
+      "eligible_complete_samples": 173,
+      "unique_patients": 173,
+      "patients_with_multiple_eligible_samples": 0,
+      "LOC401317_row_present": false,
+      "sites": {
+        "Peripheral Blood": 173
+      }
+    },
+    "Beat-AML": {
+      "clinical_samples": 672,
+      "expression_columns": 451,
+      "eligible_complete_samples": 222,
+      "unique_patients": 220,
+      "patients_with_multiple_eligible_samples": 2,
+      "LOC401317_row_present": false,
+      "sites": {
+        "Bone Marrow Aspirate": 139,
+        "Peripheral Blood": 77,
+        "Leukapheresis": 4
+      }
+    }
+  },
+  "results": [
+    {
+      "cohort": "TCGA-LAML",
+      "test": "Spearman_primary",
+      "n": 173,
+      "effect": 0.5205538798503135,
+      "ci95_low": 0.40063248863994877,
+      "ci95_high": 0.6245141616955624,
+      "p_raw": 1e-05,
+      "scale": "ranks of provided gene expression",
+      "difference_vs_discovery_rho": -0.0821811628847291,
+      "difference_ci95_low": -0.3391325070095155,
+      "difference_ci95_high": 0.27392770968979907,
+      "q_BH_family4": 1e-05
+    },
+    {
+      "cohort": "TCGA-LAML",
+      "test": "Pearson_secondary",
+      "n": 173,
+      "effect": 0.5394615723216672,
+      "ci95_low": 0.4244221278060721,
+      "ci95_high": 0.6373619582686274,
+      "p_raw": 1.8888571585524378e-14,
+      "scale": "log2(RSEM+1)",
+      "difference_vs_discovery_rho": "",
+      "difference_ci95_low": "",
+      "difference_ci95_high": "",
+      "q_BH_family4": 7.555428634209751e-14
+    },
+    {
+      "cohort": "Beat-AML",
+      "test": "Spearman_primary",
+      "n": 220,
+      "effect": 0.4738382240954679,
+      "ci95_low": 0.34686944013136134,
+      "ci95_high": 0.5874944494693434,
+      "p_raw": 1e-05,
+      "scale": "ranks of provided gene expression",
+      "difference_vs_discovery_rho": -0.12889681863957475,
+      "difference_ci95_low": -0.38907520234548176,
+      "difference_ci95_high": 0.23087350616870753,
+      "q_BH_family4": 1e-05
+    },
+    {
+      "cohort": "Beat-AML",
+      "test": "Pearson_secondary",
+      "n": 220,
+      "effect": 0.4470567658969295,
+      "ci95_low": 0.3345693727872803,
+      "ci95_high": 0.5469835084458798,
+      "p_raw": 3.306605595128996e-12,
+      "scale": "as provided (includes negative values; not logged again)",
+      "difference_vs_discovery_rho": "",
+      "difference_ci95_low": "",
+      "difference_ci95_high": "",
+      "q_BH_family4": 6.613211190257992e-12
+    }
+  ],
+  "discovery_AML": {
+    "n": 26,
+    "rho": 0.6027350427350426,
+    "ci95_bootstrap": [
+      0.2527216748768473,
+      0.8292011019283747
+    ]
+  },
+  "seed": 42,
+  "bootstrap_replicates": 10000,
+  "permutations": 99999,
+  "BH_family": "4 external tests: 2 cohorts x 2 methods, no discovery tests included",
+  "datahub_commit": "e1b75cd25bf7436d16719b7d76117ad8f3f66e54",
+  "versions": {
+    "numpy": "2.4.4",
+    "scipy": "1.17.1"
+  },
+  "inputs": [
+    {
+      "path": "laml_tcga/data_mrna_seq_v2_rsem.txt",
+      "sha256": "5337f76449e934060d8d48df43b80475f19d60b2fa07e7b437d74b004d4587f1",
+      "bytes": 30053911,
+      "url": "https://media.githubusercontent.com/media/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/laml_tcga/data_mrna_seq_v2_rsem.txt"
+    },
+    {
+      "path": "laml_tcga/data_clinical_sample.txt",
+      "sha256": "f3994dd7d7b345e458cbeb1246b120317665c8e7cc61542458a53966fd92c8d2",
+      "bytes": 80912,
+      "url": "https://media.githubusercontent.com/media/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/laml_tcga/data_clinical_sample.txt"
+    },
+    {
+      "path": "laml_tcga/data_clinical_patient.txt",
+      "sha256": "5db6de0d0cd4c8cba8ce7e2523d54d314a3dbec6dc7c52aa14ab43c374cdab79",
+      "bytes": 76637,
+      "url": "https://media.githubusercontent.com/media/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/laml_tcga/data_clinical_patient.txt"
+    },
+    {
+      "path": "laml_tcga/meta_study.txt",
+      "sha256": "2c18638ad8caff2215eb651a517f35f0ece4f96f55607c6cc0c226e6383ba25b",
+      "bytes": 347,
+      "url": "https://raw.githubusercontent.com/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/laml_tcga/meta_study.txt"
+    },
+    {
+      "path": "aml_ohsu_2018/data_mrna_seq_rpkm.txt",
+      "sha256": "1d2645fc3474efe530a8c340db8a8004aae76b71b2567b5e9a58fb981e406406",
+      "bytes": 125013980,
+      "url": "https://media.githubusercontent.com/media/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/aml_ohsu_2018/data_mrna_seq_rpkm.txt"
+    },
+    {
+      "path": "aml_ohsu_2018/data_clinical_sample.txt",
+      "sha256": "b8ecc276396458cb570ec3cf9a624ad47a743210eaf7121cf426c3aa033f4939",
+      "bytes": 583363,
+      "url": "https://media.githubusercontent.com/media/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/aml_ohsu_2018/data_clinical_sample.txt"
+    },
+    {
+      "path": "aml_ohsu_2018/data_clinical_patient.txt",
+      "sha256": "0a94cd887fd70e9173aaa0a0e067a7f8255d3ae5d9de9cee9512fc200b513063",
+      "bytes": 147112,
+      "url": "https://media.githubusercontent.com/media/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/aml_ohsu_2018/data_clinical_patient.txt"
+    },
+    {
+      "path": "aml_ohsu_2018/meta_study.txt",
+      "sha256": "013fbca84106b608d72de612800cbfdfcd8f6cf9e3408f04fec5518860d20a60",
+      "bytes": 323,
+      "url": "https://raw.githubusercontent.com/cBioPortal/datahub/e1b75cd25bf7436d16719b7d76117ad8f3f66e54/public/aml_ohsu_2018/meta_study.txt"
+    }
+  ],
+  "predictive_model_evaluation": "not performed: missing serialized preprocessing and cross-platform transport not defined",
+  "discovery_provenance": {
+    "dataset": "GSE9476, local project matrix",
+    "full_local_matrix_sha256": "ebabee4bd4b12c7bc624e4b556f402d293cb9e99a7c0f618c310d4b91fde4f1e",
+    "extracted_subset": "data/discovery_aml_pair.csv",
+    "extracted_subset_sha256": "16774cd7f1550f07bf88a0cf56f34bdf906a82afeffd6809f9b57966cd64b992",
+    "n_AML": 26
+  }
+}

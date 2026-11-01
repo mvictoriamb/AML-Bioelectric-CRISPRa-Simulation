@@ -1,0 +1,4 @@
+cohort,site,n,rho_descriptive
+TCGA-LAML,Peripheral Blood,173,0.5205538798503135
+Beat-AML,Bone Marrow Aspirate,139,0.38098695866951515
+Beat-AML,Peripheral Blood,77,0.6193584005496864

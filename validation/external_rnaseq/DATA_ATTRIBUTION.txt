@@ -1,0 +1,25 @@
+DATA ATTRIBUTION
+
+Public source data: cBioPortal Datahub, TCGA-LAML and Beat AML/OHSU 2018.
+Pinned Datahub revision: e1b75cd25bf7436d16719b7d76117ad8f3f66e54.
+Retrieved: 1 November 2026.
+
+The expression values and public specimen identifiers in
+data/selected_samples_expression.csv are an extraction from these providers.
+The two-probe AML discovery subset in data/discovery_aml_pair.csv is extracted
+from the project's local GSE9476 expression matrix without changing values.
+It is not a newly normalized reconstruction of the GEO raw data.
+
+The repository's software licence does not replace the source data terms.
+cBioPortal Datahub describes its database under ODbL and describes TCGA data
+under the Broad Institute GDAC TCGA Analysis Pipeline terms. Preserve source
+attribution and applicable terms when redistributing extracted data:
+https://github.com/cBioPortal/datahub#license
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Primary study references:
+https://doi.org/10.1056/NEJMoa1301689
+https://doi.org/10.1038/s41586-018-0623-z
+
+SHA256 checksums of the downloaded inputs are included in results/results.json.
+The large original matrices are not included in the upload bundle.
