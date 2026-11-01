@@ -1,5 +1,5 @@
 # Leukemia Biomarker Discovery & Bioelectric Analysis
-## 📝 Research Overview
+## Research Overview
 This repository contains the computational pipeline and bioinformatics tools developed for the research paper: "In Silico Validation of CRISPRa-Mediated LOC401317 Activation to Reverse KCNJ15-Induced Bioelectric Immunosuppression in Acute Myeloid Leukemia".
 
 The project implements a Deep Learning framework for clinical subtype classification and feature selection. It specifically explores the synergy between genomic "dark matter" (lncRNAs) and cancer bioelectricity by identifying regulatory axes between non-coding transcripts and ion channels.
@@ -39,7 +39,7 @@ This study validates the LOC401317-KCNJ15 axis as a critical bioelectric vulnera
 └── requirements.txt               # Required Python libraries
 ````
 
-## 📂 Data Requirements
+## Data Requirements
 
 Due to GitHub's file size restrictions, the platform annotation file is not included in this repository.
 
@@ -52,3 +52,10 @@ Place it inside the /data folder in the project root.
 This file is critical for mapping technical probe IDs to biological gene symbols.
 
 *Note: The PhysiCell output folders contain the final state data and spatial SVG representations used to generate the figures in the manuscript. The full C++ custom modules are being refactored for a future standalone software release.*
+
+## External RNA-seq association replication
+
+An exploratory replication in TCGA-LAML (173 patients) and Beat AML (220 de novo patients) found positive CREB5–KCNJ15 coexpression: Spearman rho=0.521 and 0.474, respectively. Both remained significant after Benjamini–Hochberg correction across four external tests. The analysis, extracted data, provenance and reproduction scripts are available in [validation/external_rnaseq](validation/external_rnaseq/README.md).
+
+This result concerns CREB5 gene-level expression. The historical LOC401317 annotation does not establish a specific CREB5-AS1 signal. The association analysis does not validate the neural-network classifier, immune effects or therapeutic efficacy.
+
