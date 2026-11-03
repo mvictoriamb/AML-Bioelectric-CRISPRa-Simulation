@@ -29,7 +29,7 @@ def main():
         raise ValueError('La salida debe estar fuera del proyecto original')
     out.mkdir(parents=True, exist_ok=True)
     matrix = root / 'data/Leukemia_GSE9476.csv'
-    model = root / 'models/modelo_leucemia.keras'
+    model = root / 'models/model_leukemia.keras'
     biomarkers = root / 'results/biomarcadores.csv'
     df = pd.read_csv(matrix)
     X = df.drop(columns=['samples', 'type'])
