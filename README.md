@@ -81,6 +81,15 @@ Selected files and directories currently provided in the repository:
 ├── results/
 │   └── biomarkers.csv
 ├── validation/
+│   ├── model_recovery/
+│   │   ├── LEEME.txt
+│   │   ├── reconstruir.py
+│   │   ├── predecir.py
+│   │   ├── modelo_inferencia_numpy.npz
+│   │   ├── preprocesamiento_reconstruido.joblib
+│   │   ├── sondas_500_ordenadas.csv
+│   │   ├── predicciones_candidato.csv
+│   │   └── verificacion.json
 │   └── external_rnaseq/
 │       ├── README.md
 │       ├── DATA_ATTRIBUTION.txt
@@ -101,15 +110,17 @@ This root README provides the project overview. The README inside `validation/ex
 
 ## Data requirements and reproducibility
 
-### Discovery microarray data
+### Discovery matrix and candidate model recovery
 
-The original [GSE9476 series in NCBI GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9476) contains 26 AML samples and 38 healthy reference samples. Its native platform is **GPL96, Affymetrix HG-U133A**.
+The complete prepared discovery matrix is included at `data/Leukemia_GSE9476.csv`. It contains 64 samples, 22,283 probe features, sample identifiers and five labels: AML, Bone_Marrow, Bone_Marrow_CD34, PB and PBSC_CD34. These represent AML and reference sample groups, not five molecular AML subtypes. The historical preprocessing from the original GEO data to this prepared matrix remains undocumented.
 
-The discovery scripts expect a prepared sample-by-probe matrix at `data/Leukemia_GSE9476.csv`, including the `type` column and the original probe identifiers. The committed file is a placeholder, not the complete expression matrix. The full discovery workflow requires the actual prepared matrix; downloading the GEO source alone does not recreate an undocumented preprocessing step.
+Candidate model recovery artifacts are available in `validation/model_recovery/`. Reconstructing the five stratified folds defined in the historical notebook uniquely reproduces the original top-20 probe ranking in fold 5, including its F-statistics within numerical precision. The original ranking is preserved at `results/biomarcadores.csv`, the path expected by the reconstruction script.
 
-For a new annotation analysis, use the [GPL96 platform record](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GPL96) and document the annotation version and any probe remapping. The earlier workflow consulted `GPL570-55999.txt`; that historical annotation file is not included and should not be represented as GSE9476's native platform.
+Combining the reconstructed fold-5 preprocessing with the original local model weights correctly classifies all 12 reconstructed fold-5 test samples using NumPy inference. This single-fold result does not verify the previously reported 98.3% cross-validation accuracy or establish external predictive performance.
 
-The external replication includes a small [AML discovery subset](validation/external_rnaseq/data/discovery_aml_pair.csv), containing the two probe measurements used in the association comparison. It reproduces that comparison without requiring the complete discovery matrix, but it is insufficient to retrain the neural network.
+The ranking match strongly supports the recovered selector's association with fold 5, but does not independently establish the training provenance of the saved weights. Direct comparison against TensorFlow inference remains pending.
+
+The recovery directory includes the reconstructed scaler, feature selector and class encoder; the ordered 500 selected probes; a portable NumPy inference model; candidate predictions; reconstructed partitions; source checksums; and reconstruction and inference scripts. The historical notebook and original Keras model are retained separately for traceability.
 
 ### External RNA-seq data
 
