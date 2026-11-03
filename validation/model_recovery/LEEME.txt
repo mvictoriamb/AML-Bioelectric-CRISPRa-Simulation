@@ -1,0 +1,57 @@
+RECUPERACION DEL MODELO AML - 3 de noviembre de 2026
+
+Los originales no se han modificado. No se ha reentrenado la red.
+
+RESULTADO
+Se reconstruyeron las cinco particiones definidas en el notebook original
+(StratifiedKFold, cinco folds, shuffle=True, random_state=42).
+Solo el quinto fold reproduce el ranking original completo de 20 sondas,
+en el mismo orden y con un error maximo de F-score de 5.69e-14.
+Con el escalador y selector de ese fold y los pesos originales, se aciertan
+las 12 muestras de prueba (12/12). Esto no verifica el 98.3% medio publicado.
+
+CERTEZA Y LIMITES
+La coincidencia identifica con gran fuerza el selector del quinto fold.
+La arquitectura y el guardado tras el bucle son compatibles con esos pesos.
+No existe un registro original que demuestre su procedencia de manera absoluta.
+Los archivos de preprocesamiento se etiquetan como reconstruidos/candidatos.
+Las otras cuatro redes originales y sus metricas no se han recuperado.
+El modelo clasifica AML y cuatro grupos de referencia, no AML frente a ALL.
+No aplicar a nuevas matrices con otra normalizacion/plataforma sin validacion.
+No hay validacion clinica ni externa del clasificador.
+
+ARCHIVOS
+- modelo_inferencia_numpy.npz: pesos originales extraidos y preprocesamiento
+  reconstruido; portable sin TensorFlow, con carga allow_pickle=False.
+- preprocesamiento_reconstruido.joblib: escalador, selector, codificador y
+  columnas originales. Cargar solo esta copia de confianza con joblib.
+- sondas_500_ordenadas.csv: orden exacto de entrada a la red reconstruida.
+- predicciones_candidato.csv: predicciones/probabilidades de las 64 muestras;
+  la columna partition distingue entrenamiento y prueba.
+- verificacion.json: hashes de origen, cinco particiones, comparacion de
+  rankings, clases, matriz de confusion y comprobaciones numericas.
+- reconstruir.py: repite la reconstruccion sin entrenar ni modificar origen.
+- predecir.py: permite usar el modelo reconstruido con numpy y pandas.
+
+USO (Python con numpy y pandas)
+python predecir.py --csv "RUTA/Leukemia_GSE9476.csv" --salida "predicciones.csv"
+
+RECONSTRUIR
+Requiere tambien scipy, scikit-learn, h5py y joblib.
+python reconstruir.py --proyecto "RUTA/Proyecto_Leukemia" --salida "OTRA_CARPETA"
+Versiones usadas: Python 3.12.14; numpy 2.4.4; scipy 1.17.1;
+scikit-learn 1.8.0; pandas 2.3.3; h5py 3.14.0; joblib 1.5.3.
+
+CONTEXTO GITHUB
+https://github.com/mvictoriamb/AML-Bioelectric-CRISPRa-Simulation
+El README publico identifica la matriz completa como requisito ausente del
+repositorio. La reconstruccion usa la matriz completa local, el notebook local,
+el ranking local y el archivo Keras local, sin depender de recordar parametros.
+
+VERIFICACION DE INFERENCIA
+Las 64 etiquetas del predictor portable coinciden con el calculo de
+reconstruccion y no cambian al reordenar las columnas del CSV.
+La comprobacion adicional con TensorFlow se interrumpio por demora durante
+su carga; no se ha verificado equivalencia entre backends. Los pesos se
+leyeron directamente del HDF5 original y se evaluaron con NumPy.
+Los hashes de matriz, modelo y biomarcadores originales permanecen iguales.
